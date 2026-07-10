@@ -6,7 +6,7 @@ import On3 from "../../../assets/images/on_2.svg";
 
 const { width } = Dimensions.get("window");
 
-export const OnboardingScreen = () => {
+export const OnboardingScreen = ({navigation}) => {
     const [page, setPage] = useState(1);
     const flatRef = useRef(null);
     const slides = [
@@ -30,25 +30,36 @@ export const OnboardingScreen = () => {
         },
     ];
 
-    const goToNext = useCallback(() => {
+    const onClickNext = () => {
         if (page < slides.length) {
-            flatRef.current?.scrollToIndex({ index: page });
-            setPage((prev) => prev + 1);
+            flatRef.current?.scrollToIndex({
+                index: page,
+                animated:true
+            });
+        }else{
+            navigation.replace("Login")
         }
-    }, [page]);
+    };
 
-    const goToPrev = useCallback(() => {
+    const onClickPrev = () => {
         if (page > 1) {
-            flatRef.current?.scrollToIndex({ index: page - 2 });
-            setPage((prev) => prev - 1);
+            flatRef.current?.scrollToIndex({
+                index: page - 2,
+                animated:true
+            });
         }
-    }, [page]);
+    };
+
+    const onClickSkip = () => {
+        navigation.replace("Login")
+    }
+
 
     return (
         <View style={styles.screen}>
             <View style={styles.header}>
                 <Text style={styles.headerText}>{page}/3</Text>
-                {page < slides.length && <Text style={styles.headerText}>Skip</Text>}
+                {page < slides.length && <Text onPress={onClickSkip} style={styles.headerText}>Skip</Text>}
             </View>
 
             <View style={styles.content}>
@@ -77,7 +88,7 @@ export const OnboardingScreen = () => {
                     />
                 </View>
                 <View style={styles.bottomStyle}>
-                    <Text onPress={goToPrev} style={[styles.prev, page > 1 && { color: 'black' }]}>Prev</Text>
+                    <Text onPress={onClickPrev} style={[styles.prev, page > 1 && { color: 'black' }]}>Prev</Text>
                     <View style={{ flexDirection: 'row', width: 80, justifyContent: 'space-between' }}>
                         {
                             slides.map((_, index) => (
@@ -91,7 +102,7 @@ export const OnboardingScreen = () => {
                             ))
                         }
                     </View>
-                    <Text onPress={goToNext} style={styles.next}>Next</Text>
+                    <Text onPress={onClickNext} style={styles.next}>Next</Text>
                 </View>
             </View>
         </View>
@@ -102,12 +113,12 @@ const styles = StyleSheet.create({
     screen: {
         flex: 1,
         paddingHorizontal: 20,
-        backgroundColor: '#ffffff'
+        backgroundColor: "#ffffff",
     },
     header: {
         width: "100%",
         height: 40,
-        backgroundColor: "white",
+        backgroundColor: "#ffffff",
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
