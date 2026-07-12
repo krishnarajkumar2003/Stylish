@@ -68,7 +68,7 @@ export const ShoppingBagScreen = ({ navigation, route }) => {
 
                 <View style={styles.row}>
                     <Text style={styles.rowTitle}>Delivery Fee</Text>
-                    <Text style={styles.free}>FREE</Text>
+                    <Text style={styles.free}>₹ 30</Text>
                 </View>
 
                 <View style={styles.divider} />
