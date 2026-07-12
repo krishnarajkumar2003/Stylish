@@ -4,92 +4,9 @@ import SearchIcon from "../../../assets/icons/search.svg"
 import { ProductCard } from "../../components/ProductCard"
 import Dress from "../../../assets/images/dress.svg"
 import { useMemo, useRef, useState } from "react"
+import {products} from '../../context/products'
+export const DashboardScreen = ({ navigation }) => {
 
-export const DashboardScreen = () => {
-    const products = {
-        "products": [
-            {
-                "id": 1,
-                "title": "Black Winter...",
-                "description": "Autumn And Winter Casual cotton-padded jacket...",
-                "price": 499,
-                "currency": "INR",
-                "rating": 4.2,
-                "review_count": 6890,
-                "image_url": <Dress />
-            },
-            {
-                "id": 2,
-                "title": "Mens Starry",
-                "description": "Mens Starry Sky Printed Shirt 100% Cotton Fabric",
-                "price": 399,
-                "currency": "INR",
-                "rating": 4.0,
-                "review_count": 152344,
-                "image_url": <Dress />
-            },
-            {
-                "id": 3,
-                "title": "Black Dress",
-                "description": "Solid Black Dress for Women, Sexy Chain Shorts Ladi...",
-                "price": 2000,
-                "currency": "INR",
-                "rating": 4.5,
-                "review_count": 523456,
-                "image_url": <Dress />
-            },
-            {
-                "id": 4,
-                "title": "Pink Embroide...",
-                "description": "EARTHEN Rose Pink Embroidered Tiered Max...",
-                "price": 1900,
-                "currency": "INR",
-                "rating": 4.1,
-                "review_count": 45678,
-                "image_url": <Dress />
-            },
-            {
-                "id": 5,
-                "title": "Flare Dress",
-                "description": "Antheaa Black & Rust Orange Floral Print Tiered Midi F...",
-                "price": 1990,
-                "currency": "INR",
-                "rating": 4.3,
-                "review_count": 335566,
-                "image_url": <Dress />
-            },
-            {
-                "id": 6,
-                "title": "denim dress",
-                "description": "Blue cotton denim dress Look 2 Printed cotton dr...",
-                "price": 999,
-                "currency": "INR",
-                "rating": 3.9,
-                "review_count": 27344,
-                "image_url": <Dress />
-            },
-            {
-                "id": 7,
-                "title": "Jordan Stay",
-                "description": "The classic Air Jordan 12 to create a shoe that's fres...",
-                "price": 4999,
-                "currency": "INR",
-                "rating": 3.4,
-                "review_count": 1023456,
-                "image_url": <Dress />
-            },
-            {
-                "id": 8,
-                "title": "Realme 7",
-                "description": "6 GB RAM | 64 GB ROM | Expandable Upto 256...",
-                "price": 3499,
-                "currency": "INR",
-                "rating": 4.1,
-                "review_count": 344567,
-                "image_url": <Dress />
-            },
-        ]
-    }
 
     const [search, setSearch] = useState('')
     const searchRef = useRef(null);
@@ -111,11 +28,11 @@ export const DashboardScreen = () => {
             return itemTitle.includes(formattedSearch) || itemDesc.includes(formattedSearch);
         });
 
-    }, [search]); // Note: If 'products' is still defined inside the component body,
-                // remember to move it outside to avoid a hidden performance hit!
- 
+    }, [search, products]); // Note: If 'products' is still defined inside the component body,
+    // remember to move it outside to avoid a hidden performance hit!
+
     const renderItem = ({ item }) => {
-        return <ProductCard item={item} />
+        return <ProductCard item={item} navigation={navigation} />
     }
 
     const onChangeSearch = (value) => {

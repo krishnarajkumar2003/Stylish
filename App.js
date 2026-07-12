@@ -15,6 +15,16 @@ import {
 import { SplashScreen } from './src/screens/SplashScreen/SplashScreen.js'
 import { StackNavigation } from './src/navigations/StackNavigation.js'
 import { useEffect } from 'react';
+import { LoaderProvider } from "./src/context/LoaderContext.js"
+
+console.log = () => { };
+console.warn = () => { };
+console.error = () => { };
+console.info = () => { };
+console.debug = () => { };
+console.trace = () => { };
+
+
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
 
@@ -27,10 +37,12 @@ function App() {
     }, []
   )
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: '#F83758' }} edges={['left', 'right', 'top', 'bottom']}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <StackNavigation />
-    </SafeAreaView>
+    <LoaderProvider>
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#F83758' }} edges={['left', 'right', 'top', 'bottom']}>
+        <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+        <StackNavigation />
+      </SafeAreaView>
+    </LoaderProvider>
   );
 }
 

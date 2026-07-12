@@ -5,15 +5,26 @@ const { width } = Dimensions.get('window');
 // 16 padding on both sides of the screen = 32. 18 representing the gap between items.
 const CARD_WIDTH = (width - 50) / 2;
 
-export const ProductCard = ({ item }) => {
+export const ProductCard = ({ item, navigation }) => {
+
+
+    const ImageComponent = item.image_url;
+
+
+    const onClickProduct = () => {
+        navigation.navigate("ProductDetails",{item})
+    }
+
+
+
     return (
-        <TouchableOpacity style={styles.card}>
+        <TouchableOpacity onPress={onClickProduct} style={styles.card}>
             {/* 
                We pass width and height directly to the SVG component (or wrapper) 
                to ensure it fills out the top half of the card smoothly.
             */}
             <View style={styles.imageContainer}>
-                {item.image_url}
+                <ImageComponent width="100%" height="100%" />
             </View>
             <View style={styles.info}>
                 <Text style={styles.title} numberOfLines={1}>{item.title}</Text>

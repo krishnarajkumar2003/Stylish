@@ -1,22 +1,72 @@
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import MenuIcon from '../../assets/icons/menu.svg';
 import Logo from '../../assets/images/logo.svg';
 import Profile from '../../assets/images/profile.svg';
+import BackIcon from "../../assets/icons/back.svg"
+import CartIcon from "../../assets/icons/cart.svg"
+import { useCallback } from 'react';
 
-export const CustomHeader = () => {
+
+export const CustomHeader = ({
+  showBackBtn = false,
+  showMenu = false,
+  showProfile = false,
+  showCart = false,
+  showLogo = false,
+  title = '',
+  navigation
+}) => {
+
+
+  const onClickBankBtn = useCallback(
+    () => {
+      navigation.goBack();
+    }, []
+  )
+
   return (
     <View style={styles.header}>
-      <View style={styles.menu}>
-        <MenuIcon />
-      </View>
+      {
+        showMenu &&
+        <TouchableOpacity>
+          <MenuIcon height={24} width={24} />
+        </TouchableOpacity>
+      }
 
-      <View style={styles.logoContainer}>
-        <Logo height={40} width={120} />
-      </View>
+      {
+        showBackBtn &&
+        <TouchableOpacity onPress={onClickBankBtn}>
+          <BackIcon height={24} width={24} />
+        </TouchableOpacity>
+      }
 
-      <View style={styles.profile}>
-        <Profile />
-      </View>
+      {
+        title &&
+        <Text style={styles.title}>
+          {title}
+        </Text>
+      }
+
+      {
+        showLogo &&
+        <TouchableOpacity>
+          <Logo height={40} width={120} />
+        </TouchableOpacity>
+      }
+
+      {
+        showProfile &&
+        <TouchableOpacity>
+          <Profile height={40} width={40} />
+        </TouchableOpacity>
+      }
+
+      {
+        showCart &&
+        <TouchableOpacity>
+          <CartIcon height={24} width={24} />
+        </TouchableOpacity>
+      }
     </View>
   );
 };
@@ -25,22 +75,15 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
     height: 55,
     width: '100%',
     paddingHorizontal: 12,
     paddingTop: 8,
     backgroundColor: '#ffffff'
   },
-  menu: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  logoContainer: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+  title: {
+    fontSize: 19,
+    fontWeight: '500'
+  }
 });
