@@ -58,7 +58,7 @@ export const CheckOutScreen = ({ navigation, route }) => {
       navigation.reset({
         index: 0,
         routes: [{
-          name: 'Dashboard'
+          name: 'Main'
         }]
       })
     }, 6000)

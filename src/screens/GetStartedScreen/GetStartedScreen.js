@@ -8,7 +8,7 @@ export const GetStartedScreen = ({navigation}) => {
 
   const goToDashboard = useCallback(
     () => {
-      navigation.replace("Dashboard")
+      navigation.replace("Main")
     },[]
   )
 

@@ -38,12 +38,19 @@ function App() {
   )
   return (
     <LoaderProvider>
-      <SafeAreaView style={{ flex: 1, backgroundColor: '#F83758' }} edges={['left', 'right', 'top', 'bottom']}>
+      <SafeAreaView style={styles.container} edges={['left', 'right', 'top', 'bottom']}>
         <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
         <StackNavigation />
       </SafeAreaView>
     </LoaderProvider>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#F83758',
+  },
+});
 
 export default App;

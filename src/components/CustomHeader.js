@@ -28,7 +28,7 @@ export const CustomHeader = ({
     <View style={styles.header}>
       {
         showMenu &&
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
           <MenuIcon height={24} width={24} />
         </TouchableOpacity>
       }
