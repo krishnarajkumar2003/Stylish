@@ -41,13 +41,14 @@ export const DashboardScreen = ({ navigation }) => {
 
     return (
         <View style={styles.screen}>
-            < CustomInput
+            <CustomInput
                 ref={searchRef}
                 value={search}
                 showLeftIcon
                 leftIcon={<SearchIcon />}
                 placeholder="Search any Product"
                 onChangeText={onChangeSearch}
+                isEditable
             />
             <FlatList
                 data={filteredProducts}

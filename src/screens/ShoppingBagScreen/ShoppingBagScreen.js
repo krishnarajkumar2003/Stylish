@@ -95,7 +95,7 @@ export const ShoppingBagScreen = ({ navigation, route }) => {
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
-        backgroundColor: "#F5F5F5",
+        backgroundColor: "#ffffff",
         padding: 16,
     },
 

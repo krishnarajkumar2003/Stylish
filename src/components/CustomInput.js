@@ -12,6 +12,7 @@ export const CustomInput = ({
   value = "",
   style,
   onChangeText = null,
+  isEditable=false,
   width='100%'
 }) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -24,6 +25,7 @@ export const CustomInput = ({
         style={styles.input}
         ref={ref}
         placeholder={placeholder}
+        editable={isEditable}
         value={value}
         onChangeText={onChangeText}
         secureTextEntry={isPassword && !showPassword}

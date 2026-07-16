@@ -24,6 +24,10 @@ export const CustomHeader = ({
     }, []
   )
 
+  const goToProfile = () => {
+    navigation.navigate("Profile")
+  }
+
   return (
     <View style={styles.header}>
       {
@@ -56,7 +60,7 @@ export const CustomHeader = ({
 
       {
         showProfile &&
-        <TouchableOpacity>
+        <TouchableOpacity onPress={goToProfile}>
           <Profile height={40} width={40} />
         </TouchableOpacity>
       }

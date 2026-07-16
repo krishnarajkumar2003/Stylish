@@ -11,6 +11,8 @@ import { ProductDetailsScreen } from "../screens/ProductDetailsScreen/ProductDet
 import { CustomHeader } from "../components/CustomHeader";
 import { ShoppingBagScreen } from "../screens/ShoppingBagScreen/ShoppingBagScreen";
 import { CheckOutScreen } from "../screens/CheckOutScreen/CheckOutScreen";
+import {ProfileScreen} from "../screens/ProfileScreen/ProfileScreen"
+import { CartScreen } from "../screens/CartScreen/CartScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -65,6 +67,22 @@ export const StackNavigation = () => {
         <Stack.Screen
           name="Main"
           component={DrawerNavigation}
+        />
+        <Stack.Screen
+          name="Profile"
+          component={ProfileScreen}
+          options={{
+            headerShown: true,
+            header: (prop) => <CustomHeader {...prop} showBackBtn />
+          }}
+        />
+        <Stack.Screen
+          name="CartScreen"
+          component={CartScreen}
+          options={{
+            headerShown: true,
+            header: (prop) => <CustomHeader {...prop} showBackBtn />
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>

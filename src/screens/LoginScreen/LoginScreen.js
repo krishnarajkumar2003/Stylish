@@ -27,6 +27,7 @@ export const LoginScreen = ({ navigation }) => {
                     onChangeText={setEmail}
                     value={email}
                     ref={emailRef}
+                    isEditable
                 />
 
                 <CustomInput
@@ -39,6 +40,7 @@ export const LoginScreen = ({ navigation }) => {
                     style={{
                         marginTop: 34
                     }}
+                    isEditable
                 />
                 <TouchableOpacity style={styles.forget}>
                     <Text style={styles.forget}>Forget password?</Text>
